@@ -1,10 +1,11 @@
 const User = require('../model/User.model')
 const {Router} = require('express');
+const authentication  = require('../middleware/authentication');
 
 const authRouter = Router();
 
 
-authRouter.post('/register', async (req,res) => {
+authRouter.post('/register',authentication, async (req,res) => {
     console.log(req.body)
    const user = await User.create(req.body);
 //    console.log(user)
