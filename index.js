@@ -8,6 +8,9 @@ app.use(express.json());
 app.get('/', (req, res) => {
     res.send("home")
 })
+app.get('/', (req, res) => {
+    
+})
 
 
 app.listen(process.env.PORT || 8080, async() => {
