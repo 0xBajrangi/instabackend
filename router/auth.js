@@ -14,6 +14,20 @@ authRouter.post('/register',authentication, async (req,res) => {
   res.send(user)
 })
 
+authRouter.get('/data', async(req,res) => {
+   
+    try {
+    const user = await User.find({}).lean().exec()
+    
+    res.send(user);
+    }
+    catch(err){
+        console.log(1)
+        console.log(err);
+        res.send(err);
+    }
+  
+})
 
 
 module.exports = authRouter;
