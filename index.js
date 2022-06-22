@@ -14,12 +14,17 @@ app.use('/auth',authRouter);
 app.get('/', (req, res) => {
     res.send("home")
 })
-app.get('/', (req, res) => {
-    
-})
+
 
 
 app.listen(process.env.PORT || 1434, async() => {
-   await connection;
+    try {
+        await connection;
+    }
+
+    catch(err){
+        console.log(err)
+    }
+  
 
 })

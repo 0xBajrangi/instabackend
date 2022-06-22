@@ -12,7 +12,7 @@ authRouter.get('/', async (req, res) => {
   res.send(users)
 })
 
-authRouter.get('/login', authLogin, async (req, res) => {
+authRouter.post('/login', authLogin, async (req, res) => {
   const users = await User.find(req.body);
   res.status(201).send({ message: 'user exits' ,user:users[0]});
 
@@ -30,7 +30,7 @@ authRouter.post('/register',authentication, async (req,res) => {
 authRouter.get('/data', async(req,res) => {
    
     try {
-    const user = await User.find({}).lean().exec()
+    const user = await User.find({}).limit(10).lean().exec()
     
     res.send(user);
     }
